@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Science Portfolio on Anjali Ramesh</title>
+    <link>https://gohugo-theme-ananke.pages.dev/</link>
+    <description>Recent content in Data Science Portfolio on Anjali Ramesh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 30 Jun 2023 11:00:59 -0400</lastBuildDate><atom:link href="https://gohugo-theme-ananke.pages.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Project 2: Exploratory Data Analysis of the Air Quality of India</title>
+      <link>https://gohugo-theme-ananke.pages.dev/post/project-2/</link>
+      <pubDate>Fri, 30 Jun 2023 11:00:59 -0400</pubDate>
+      
+      <guid>https://gohugo-theme-ananke.pages.dev/post/project-2/</guid>
+      <description>Technical Stack: Pandas, NumPy, matplotlib, seaborn
+Analyzed air quality of India with data containing 6+ million records and 20+ air quality features. Utilized various types of data analysis techniques including outlier removal, univariate analysis, multivariate analysis, and time series analysis to gain insights into air pollution trends and patterns. Identified a correlation (63%) between population and Air Quality Index (AQI), highlighting the need for targeted pollution control measures in highly populated states to mitigate the adverse effects of air pollution.</description>
+    </item>
+    
+    <item>
+      <title>Project 1: Sales Forecasting with Machine Learning</title>
+      <link>https://gohugo-theme-ananke.pages.dev/post/project-1/</link>
+      <pubDate>Fri, 30 Jun 2023 10:58:08 -0400</pubDate>
+      
+      <guid>https://gohugo-theme-ananke.pages.dev/post/project-1/</guid>
+      <description>Technical Stack: Pandas, NumPy, EDA - matplotlib, seaborn
+Machine Learning - scikit-learn (Regression with Linear &amp;amp; Ensemble models), XGBoost
+Conducted thorough data cleaning and analysis on a substantial retail store dataset comprising over 420,000 rows and 16 columns, with the objective of predicting weekly sales Employed a variety of machine learning algorithms, including linear models, random forests, and gradient-boosted trees, utilizing libraries such as scikit-learn, XGBoost, and LightGBM Attained a weighted mean absolute error of $4000, positioning the project among the top 50% of submissions on the Kaggle platform.</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://gohugo-theme-ananke.pages.dev/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gohugo-theme-ananke.pages.dev/about/</guid>
+      <description>Unleashing the Power of Data Across Disciplines: Join Me, a Versatile Data Scientist with Expertise in Mathematics, Physics, Education, and Art. Let&amp;rsquo;s Innovate, Discover, and Dance with Data!
+Anjali Ramesh is a highly skilled data scientist and mathematician with a passion for uncovering insights from complex datasets. With a strong educational background and extensive practical experience, Anjali has developed expertise in data analysis, machine learning, and Python programming.
+Anjali holds a Master of Natural Science degree in Earth &amp;amp; Space Exploration from Arizona State University, which she completed in 2023.</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>https://gohugo-theme-ananke.pages.dev/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gohugo-theme-ananke.pages.dev/contact/</guid>
+      <description> Platform URL Linkedin: https://www.linkedin.com/in/anjaliramesh-datascience/ GitHub: https://github.com/anjaliramesh-datascience Medium: https://medium.com/@anjaliramesh Jovian: https://jovian.com/arames52 </description>
+    </item>
+    
+    <item>
+      <title>Education</title>
+      <link>https://gohugo-theme-ananke.pages.dev/education/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gohugo-theme-ananke.pages.dev/education/</guid>
+      <description>Data Science &amp;amp; Machine Learning Bootcamp
+jovian.ai | Oct 2022–June 2023
+Courses: Python Programming, Data Analysis &amp;amp; Visualization, Machine Learning, SQL &amp;amp; Analytics Highlights: 600+ hours of coursework, 10 coding assignments, 3 projects (Web scraping, EDA, ML) Certification Master of Natural Science, Earth &amp;amp; Space Exploration | GPA: 3.95/4
+Arizona State University, Tempe, AZ, USA | Aug 2020 - May 2023
+Positions held: Research Assistant (Aug 2020 - July 2022) Teaching Assistant (Aug 2022 - May 2023) 2 Research Projects (publications in prep.</description>
+    </item>
+    
+    <item>
+      <title>Experience</title>
+      <link>https://gohugo-theme-ananke.pages.dev/experience/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gohugo-theme-ananke.pages.dev/experience/</guid>
+      <description>Work Experience Teaching Assistant | Aug 2022 - May 2023
+Arizona State University, Tempe, AZ
+Instructed Introductory Astronomy Labs (AST 113) to 100+ students 500+ hours of grading and science communication Research Assistant | Aug 2020 - Jul 2022
+Arizona State University, Tempe, AZ
+Processed 500+GB of raw interferometric data (ALMA) using Python scripts, resulting in the calibration and generation of clear images for 26 radio frequency objects, enabling further analysis and insights Employed advanced image statistical modeling techniques (surface brightness profile, spectral energy distribution) using Python to analyze vital physical characteristics (size, shape, magnitude) of radio frequency objects Made a significant discovery that distant massive galaxies demonstrate central star formation and harbor compact star-forming regions, contributing to the broader understanding of galactic evolution and astrophysical processes Collaborated with a multidisciplinary team of astronomers, astrophysicists, and statisticians to design and execute data-driven research projects Communicated complex technical concepts and findings to both technical and non-technical stakeholders through poster presentations at 2 conferences Junior Data Scientist | May 2019-Jun 2020</description>
+    </item>
+    
+    <item>
+      <title>Skills</title>
+      <link>https://gohugo-theme-ananke.pages.dev/skills/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gohugo-theme-ananke.pages.dev/skills/</guid>
+      <description> Skill Stack Programming: Python, MATLAB, SQL, Cypher Libraries: Pandas, NumPy, SciPy, statsmodels, scikit-learn, XGBoost, LightGBM, OpenCV Frameworks: TensorFlow, Keras, Flask Visualization Software &amp;amp; Libraries: Tableau, matplotlib, seaborn, plotly, folium Databases: MySQL, PostgreSQL, MongoDB, neo4j, BigQuery Functional: Jira, Git, GitHub </description>
+    </item>
+    
+  </channel>
+</rss>
