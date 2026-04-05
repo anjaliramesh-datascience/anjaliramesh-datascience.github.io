@@ -218,103 +218,18 @@
           <p><strong>Data Analyst</strong> | Mar 2024 – Dec 2025<br>
             <em>Synapse Labs Inc., Scottsdale, AZ, USA</em>
           </p>
-
-          <h4>Data Catalog — Ownership &amp; Scale</h4>
           <ul>
-            <li>Sole-owned Axyo's Data Catalog feature end-to-end — from architecture design to production deployment — built solo in 2 months; the pipeline onboarded 2,000+ enterprise datasets in production, processing each in ~5–7 minutes without manual intervention, serving clients including a large US financial institution and other financial firms.</li>
-            <li>Designed and built a 12-step automated data cataloging pipeline — covering type inference, statistical profiling, correlation analysis, distribution fitting, GAN-based synthesis, LLM metadata generation, and auto-ML segmentation — that transforms raw tabular data from any source into a fully cataloged, ML-ready asset without human curation.</li>
-            <li>Owned the complete stack for the Data Catalog: FastAPI backend, ML pipeline, LLM prompt engineering, distributed PySpark profiling on AWS Glue, PostgreSQL schema design, and all REST API endpoints — sole developer on a 3-person backend team.</li>
-            <li>Designed the system architecture diagram for the Data Catalog pipeline and presented it to technical leadership before implementation, ensuring alignment on design decisions upfront rather than during development.</li>
-          </ul>
-
-          <h4>Data Catalog — ML Components</h4>
-          <ul>
-            <li>Built type-aware statistical correlation analysis that selects the appropriate test for each column-type combination — linear regression for continuous pairs (storing R², slope, and intercept when the relationship is strong), ANOVA for categorical vs. continuous, and chi-square for categorical pairs — ensuring every correlation result is statistically valid, not just numerically convenient; all results stored with method, strength label, and effect size.</li>
-            <li>Built an auto-ML segmentation system using decision trees that automatically discovers meaningful groups within any dataset and expresses them as plain-English business rules — e.g., "Region = North AND Monthly Revenue &gt; $50K" — by training separate classifiers and regressors per target variable and reverse-engineering the tree paths back into human-readable conditions; handles all column types including categorical, boolean, and datetime.</li>
-            <li>Fitted 4 statistical distribution families (Gaussian, Uniform, Gamma, Poisson) to every numeric column to identify the best-fitting shape and store its parameters — enabling both exploratory data analysis and downstream synthetic data generation that matches the real distribution.</li>
-            <li>Generated synthetic sample values for each column using GANs (Generative Adversarial Networks) for privacy-safe dataset previewing — allowing enterprise clients to share and explore data products in the UI without exposing any real values.</li>
-          </ul>
-
-          <h4>Data Catalog — LLM &amp; Prompt Engineering</h4>
-          <ul>
-            <li>Engineered 7 distinct LLM prompts for automated metadata generation, each scoped to a single task: column descriptions, PII detection, Sensitive-PII detection (kept deliberately separate from PII because combining them degraded precision), data product assignment, business domain classification, ML problem type identification, and target/segmentation variable identification.</li>
-            <li>Built a 4-step hierarchical AI classifier using OpenAI Assistants API (gpt-4o) with vector store retrieval and function calling — automatically mapping every column in every dataset into a 4-level enterprise taxonomy (domain → subdomain → data product → logical data element) via chained LLM calls where each step builds on the previous step's output.</li>
-            <li>Implemented chunked classification for large schemas (&gt;30 columns) — processing in batches of 30 with prior mappings carried forward as context into each subsequent batch, ensuring consistent, coherent taxonomy assignments across the full schema without context overflow.</li>
-            <li>Built a self-improving taxonomy: when the AI encountered a column with no existing taxonomy match, it generated a new entry with full descriptions via LLM and immediately added it back to the vector store knowledge base — so each new dataset onboarded made the system more accurate for future datasets.</li>
-            <li>Maintained a persistent AI assistant with the full organizational data model as its knowledge base; per-session threads created and destroyed on each classification run to prevent state from leaking between requests.</li>
-          </ul>
-
-          <h4>Data Catalog — Versioning &amp; Access Control</h4>
-          <ul>
-            <li>Built a complete version history for all metadata: every user edit — to column descriptions, PII flags, data type assignments, or ML variable designations — creates a new version, with the original AI-generated values always preserved as version zero; any prior state can be restored at any time, making every change fully auditable and reversible.</li>
-            <li>Designed role-based access control for both enterprise (B2B) and individual (B2C) users: access to datasets and connections is governed by a hierarchy of organization membership, team membership, and direct user grants — enforcing data governance at the platform level without manual access management.</li>
-            <li>Implemented usage quota enforcement: any request exceeding an organization's or user's quota is rejected before any processing starts — preventing runaway compute costs and enforcing tiered service limits cleanly at the API boundary.</li>
-          </ul>
-
-          <h4>Airflow &amp; AWS Orchestration</h4>
-          <ul>
-            <li>Designed and built a fully event-driven data pipeline on AWS MWAA (managed Apache Airflow): the pipeline fires automatically on every dataset upload or new data connection — no scheduled batch windows — orchestrating metadata extraction, distributed PySpark profiling on AWS Glue, and SageMaker inference across a 4-stage pipeline with up to 4 datasets profiled in parallel.</li>
-            <li>Passed large intermediate DataFrames between Airflow pipeline stages through S3 (rather than Airflow's internal metadata database, which is not designed for multi-GB payloads) — a deliberate architectural choice that eliminated out-of-memory failures on large enterprise datasets and made every stage independently restartable.</li>
-            <li>Used S3 file-presence as the completion signal between pipeline stages — polling for the output artifact rather than maintaining a live connection to the upstream job — the correct pattern for asynchronous AWS workloads that decouples each stage from the execution details of the previous one.</li>
-            <li>Normalized all incoming data formats (Excel, Parquet, S3 objects, PostgreSQL tables, Azure SQL Server exports) into a single consistent format before entering the pipeline, so all downstream processing was source-agnostic and required no per-source logic.</li>
-          </ul>
-
-          <h4>Customer Entity Resolution — Client VPC Deployment</h4>
-          <ul>
-            <li>Designed and deployed Airflow orchestration for a Customer Entity Resolution (CER) pipeline running inside a large US financial institution's own AWS VPC — processing daily delta records through domain transformation, standardization, cleansing, attribute matching, entity resolution, and master record update; this pipeline has been running in production in the client's environment for over 3 years.</li>
-            <li>Implemented S3 file-presence as the inter-stage trigger: each stage starts only when the previous stage's output is confirmed in cloud storage — making every stage independently resumable without restarting the full pipeline; a critical design choice for a client-hosted environment where there is no direct debugging access.</li>
-            <li>Built success and failure notification flows across every pipeline stage: the client's operations team receives stage-level alerts with enough context to diagnose and act on failures independently, without requiring platform team involvement.</li>
-            <li>Integrated automated data quality profiling at two checkpoints (after domain transformation and after cleansing) — providing the client with a measurable before-and-after view of how each processing stage improved data quality; reused the same profiling capability built for the internal platform.</li>
-            <li>Parameterized all environment-specific configuration (storage locations, job names, connection credentials) so the pipeline is deployable into any new client AWS environment through configuration alone, with no code changes required.</li>
-          </ul>
-
-          <h4>Data Ingestion &amp; Multi-Source Connectivity</h4>
-          <ul>
-            <li>Built a multi-source data ingestion layer supporting 6 source types — file uploads (CSV/Parquet/Excel up to 1GB), PostgreSQL, AWS S3, QuickBooks GL data via OAuth2, Azure SQL Server, and presigned S3 URLs — with every source feeding into the same automated cataloging pipeline post-connection.</li>
-            <li>Prevented duplicate data onboarding by hashing connection credentials before creation and comparing against existing connections — returning the existing connection if a match is found rather than creating a redundant copy.</li>
-            <li>Built a differential connection refresh: on refresh, compared the current source contents against already-onboarded datasets and only added new files or tables, marked removed ones, and left existing datasets untouched — safe to run repeatedly without corrupting or duplicating data.</li>
-            <li>Built a full QuickBooks OAuth2 integration — authorization URL generation with accounting and identity scopes, auth code exchange for access and refresh tokens, AES encryption of all tokens before database storage — so credentials were never held in plaintext at any point in the flow.</li>
-            <li>Implemented proactive token refresh for QuickBooks: rather than waiting for an access token to expire and cause a mid-request failure, the system checks expiry on each use and refreshes the token if it is within 5 minutes of expiring — eliminating auth errors during active GL data syncs.</li>
-            <li>Handled 3 distinct QuickBooks auth failure modes with specific reason codes: expired access token with a valid refresh token (silently auto-refreshed), refresh failure due to a QuickBooks API error (flagged for reauthorization), and fully expired session (user prompted to reconnect) — so the right action was always surfaced.</li>
-            <li>Added environment validation to QuickBooks connections: a connection authorized in production is blocked from use in any other environment, preventing a class of credential confusion bugs that are difficult to trace without this guard.</li>
-          </ul>
-
-          <h4>PySpark &amp; Big Data Profiling</h4>
-          <ul>
-            <li>Built large-scale statistical data profiling on AWS Glue using PySpark — running distributed computation across enterprise datasets that can reach hundreds of millions of rows; computed column-level completeness, cardinality, mean, min, max, stddev, and approximate percentile distributions (10th through 90th) at scale without memory constraints.</li>
-            <li>Used memory-efficient approximate algorithms for percentile estimation over large datasets — computing accurate quantile distributions without sorting the full dataset or loading it entirely into memory, making the approach viable for any dataset size.</li>
-            <li>Designed profiling output in a format directly queryable by other AWS analytics services (Athena, Redshift Spectrum) — so clients with existing data warehouse infrastructure could access profiling results from their own tools without any additional transformation.</li>
-            <li>Deployed the full profiling infrastructure portably inside customer AWS accounts: all environment-specific references (bucket names, job names, endpoint ARNs) parameterized for deployment via configuration, not code changes.</li>
-          </ul>
-
-          <h4>Scenario Planner (Integrated Business Planning)</h4>
-          <ul>
-            <li>Built the full backend for Axyo's Scenario Planner — an interactive supply chain what-if tool where business users adjust demand, backlog, customer growth, and safety stock via sliders and instantly see the impact on inventory levels, stockout risk, gross margin, and revenue at risk; powered by live SageMaker time series forecasting endpoints.</li>
-            <li>Engineered real-time SageMaker inference for 21 adjustment levels (−100% to +100%) per business lever, computed at runtime on each slider interaction — enabling live what-if scenario exploration with forecasts generated on demand rather than cached at deployment time.</li>
-            <li>Built a time-weighted sensitivity scoring system that produces a single percentage score per business lever — ranking which variables (demand forecast, backlog, safety stock, customer growth) have the highest impact on the forecast outcome, so supply chain teams know where to focus without testing every combination manually.</li>
-            <li>Built a purchase order recommendation engine with 4 quantity strategies — cover the projected shortfall, target a specific number of days of supply, reach the next supplier price break, or custom quantity — each calculated from the current demand forecast, inventory position, safety stock targets, and lead times.</li>
-            <li>Supported multi-product (multi-series) forecasting: the planner computes the aggregate company-wide forecast first, then propagates adjustments down to individual SKUs; failed SKUs are logged and skipped so a single bad record doesn't break the entire scenario run.</li>
-            <li>Used LLM for 3 targeted analytical tasks within the planner: filtering model inputs down to only user-controllable business levers, determining whether a higher or lower forecast value represents the desired business outcome, and generating an executive narrative summary from the sensitivity results — all cached and reused across related products in the hierarchy.</li>
-          </ul>
-
-          <h4>Use Case Development &amp; Business ML Framing</h4>
-          <ul>
-            <li>Designed end-to-end ML use cases from scratch for 3 business verticals — consumer electronics sales forecasting (projected $64.28M revenue uplift, 36.2% increase in monthly units sold), pharmaceutical supply chain demand forecasting (projected €15–20M working-capital release, delivery reliability improving from 87% to a forecasted 97%), and fintech loan fraud/risk detection — each starting from business problem definition, not data.</li>
-            <li>Developed pharma supply chain demand forecasting achieving MAPE 0.059: projected Days Inventory Outstanding down from 82 to 45 days and working capital from €320M to €280M — translating forecast accuracy into supply chain metrics that operational and finance teams could directly act on.</li>
-            <li>Developed consumer electronics sales forecasting achieving MAPE 0.162: projected 36.2% increase in monthly units sold and $64.28M revenue uplift from improved inventory allocation; use case templatized and deployed to production.</li>
-            <li>Designed the fraud/loan risk detection use case around the asymmetric cost of the two error types — missing fraud (full loan loss) versus rejecting a legitimate customer (lost relationship) — rather than optimizing for overall accuracy; schema structured around the 5 dimensions that underwriters actually use: applicant identity, loan characteristics, repayment history, credit utilization patterns, and derived risk indicators.</li>
-            <li>Applied a consistent use case development methodology across all 3 verticals: define the business objective → identify measurable KPIs → design a data schema around the information required → run the data insights pipeline → let auto-ML identify the problem type and fit models → surface an executive summary with projected business impact.</li>
-            <li>Presented Sales Forecasting and Demand Forecasting use cases directly to company founders; Sales Forecasting selected for templatization and shipped to production.</li>
-          </ul>
-
-          <h4>Synthetic Data Generation</h4>
-          <ul>
-            <li>Built a synthetic data generation pipeline that uses LLMs to determine the appropriate statistical distribution (Gaussian, Uniform, Gamma, or Poisson) and calibrate its parameters for each numeric column — using business domain context to produce realistic value ranges rather than blindly copying a potentially biased historical distribution.</li>
-            <li>Implemented segment-aware generation: rather than sampling from the dataset's global distribution, each synthetic record is first assigned to a business segment (from the auto-ML segmentation in the data catalog), then generated from that segment's specific conditional distributions — preserving the structure that makes the real data useful for model training.</li>
-            <li>Generated realistic synthetic replacements for PII columns — names, emails, phone numbers, national IDs — that are structurally valid and locale-appropriate for the data's business context, with no connection to real individuals.</li>
-            <li>Built multi-table synthetic data generation that respects relationships between tables: parent records are created before child records, and all cross-table references point to records that actually exist — producing a coherent relational dataset, not isolated disconnected tables.</li>
-            <li>Evaluated every generated dataset against a 3-dimensional TRUST score — Fidelity (statistical similarity to real data), Utility (whether a model trained on synthetic performs like one trained on real data), and Privacy (resistance to re-identification) — giving users a clear picture of output quality and trade-offs.</li>
-            <li>Scaled to 10M+ record generation in under 5 minutes; output delivered as a secure, time-limited presigned download URL from cloud storage — no direct storage access exposed to end users.</li>
+            <li>Sole-owned the Data Catalog feature end-to-end — from architecture to production deployment — onboarding 2,000+ enterprise datasets with zero manual curation, each processed in ~5–7 minutes; owned the full stack including FastAPI backend, ML pipeline, PostgreSQL schema, and all REST API endpoints.</li>
+            <li>Built an automated data cataloging pipeline covering type inference, statistical profiling, correlation analysis (linear regression, ANOVA, chi-square), distribution fitting, GAN-based synthesis, LLM metadata generation, and auto-ML segmentation using decision trees.</li>
+            <li>Built a hierarchical AI classifier using the OpenAI Assistants API with vector store retrieval and function calling — automatically mapping dataset columns into a multi-level enterprise taxonomy via chained LLM calls; implemented a self-improving knowledge base where new mappings were added back for future use.</li>
+            <li>Engineered LLM-powered metadata generation across multiple tasks including PII/sensitive data detection, business domain classification, and ML problem type identification; applied prompt engineering discipline to maintain precision across tasks.</li>
+            <li>Built metadata versioning and role-based access control supporting both enterprise (B2B) and individual (B2C) users, with audit history and quota enforcement at the API boundary.</li>
+            <li>Designed an event-driven Airflow DAG on AWS MWAA — triggering on every dataset upload, orchestrating distributed PySpark profiling on AWS Glue across datasets reaching hundreds of millions of rows, with S3 as the inter-stage storage layer.</li>
+            <li>Deployed Airflow orchestration for a Customer Entity Resolution pipeline inside a large US financial institution's own AWS VPC — running daily delta processing through entity resolution and master record update; in production for 3+ years.</li>
+            <li>Built multi-source data ingestion supporting 6 source types (CSV/Parquet/Excel, PostgreSQL, AWS S3, Azure SQL Server, QuickBooks GL via OAuth2, presigned URLs) with credential deduplication and differential refresh logic.</li>
+            <li>Built a synthetic data generation pipeline using LLMs to calibrate statistical distributions (Gaussian, Uniform, Gamma, Poisson) per column; implemented segment-aware generation using decision tree segments and privacy-safe PII replacement using generative models; scales to 10M+ records in under 5 minutes.</li>
+            <li>Built the backend for an interactive scenario planning tool powered by SageMaker time series forecasting — enabling real-time what-if analysis across multiple business levers with sensitivity scoring and purchase order recommendations.</li>
+            <li>Developed ML use cases across 3 verticals: pharma demand forecasting (MAPE 0.059, ElasticNet; projected OTIF 87%→97%, €40M working capital release), consumer electronics sales forecasting (MAPE 0.162, Random Forest; $64.28M revenue uplift), and fintech loan fraud/risk detection; presented to company founders, Sales Forecasting deployed to production.</li>
           </ul>
 
           <!-- ── SYNAPSE LABS — INTERN ── -->
@@ -385,7 +300,7 @@
     <div class="flex justify-between">
       <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3"
         href="https://gohugo-theme-ananke.pages.dev/">
-        &copy; Anjali Ramesh 2024
+        &copy; Anjali Ramesh 2026
       </a>
       <div>
         <div class="ananke-socials">
