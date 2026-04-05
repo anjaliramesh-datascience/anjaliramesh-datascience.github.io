@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Data Engineering on AWS — Pipelines, Orchestration &amp; Scale | Anjali Ramesh</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Building an event-driven data platform on AWS: multi-source ingestion, cloud-native orchestration, big data profiling, and deploying pipelines inside enterprise client environments.">
+    <meta name="generator" content="Hugo 0.115.1">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="/ananke/css/main.min.css">
+    <meta property="og:title" content="Data Engineering on AWS — Pipelines, Orchestration &amp; Scale" />
+    <meta property="og:description" content="Building an event-driven data platform on AWS: multi-source ingestion, cloud-native orchestration, big data profiling, and deploying pipelines inside enterprise client environments." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="/post/blog-data-engineering/" />
+    <meta property="article:published_time" content="2024-03-01T00:00:00Z" />
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="Data Engineering on AWS — Pipelines, Orchestration &amp; Scale"/>
+    <meta name="twitter:description" content="Building an event-driven data platform on AWS: multi-source ingestion, cloud-native orchestration, big data profiling, and deploying pipelines inside enterprise client environments."/>
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    <header class="cover bg-top" style="background-image: url('/images/portfolio_banner.jpg');">
+      <div class="bg-black-60">
+        <nav class="pv3 ph3 ph4-ns" role="navigation">
+          <div class="flex-l justify-between items-center center">
+            <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">Anjali Ramesh</a>
+            <div class="flex-l items-center">
+              <ul class="pl0 mr3">
+                <li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white no-underline white-90" href="/about/" title="About page">About</a></li>
+                <li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white no-underline white-90" href="/education/" title="Education page">Education</a></li>
+                <li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white no-underline white-90" href="/experience/" title="Experience page">Experience</a></li>
+                <li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white no-underline white-90" href="/skills/" title="Skills page">Skills</a></li>
+                <li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white no-underline white-90" href="/publications/" title="Publications page">Publications</a></li>
+                <li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white no-underline white-90" href="/contact/" title="Contact page">Contact</a></li>
+                <li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white no-underline white-90" href="/post/" title="Projects page">Projects</a></li>
+              </ul>
+              <div class="ananke-socials">
+                <a href="https://github.com/anjaliramesh-datascience" target="_blank" rel="noopener" class="github ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="GitHub link" aria-label="follow on GitHub——Opens in a new window">
+                  <span class="icon"><svg style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7C480,134.8,379.7,32,256,32z"/></svg></span>
+                  <span class="new-window"><svg height="8px" style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg></span>
+                </a>
+                <a href="https://www.linkedin.com/in/anjaliramesh-datascience/" target="_blank" rel="noopener" class="linkedin ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" aria-label="follow on LinkedIn——Opens in a new window">
+                  <span class="icon"><svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg></span>
+                  <span class="new-window"><svg height="8px" style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <div class="tc-l pv6 ph3 ph4-ns">
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">Data Engineering on AWS — Pipelines, Orchestration &amp; Scale</div>
+          <div class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
+            Event-driven orchestration, distributed profiling, multi-source ingestion, and running pipelines inside enterprise client VPCs.
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="pb7" role="main">
+      <article class="flex-l flex-wrap justify-between mw8 center ph3">
+        <header class="mt4 w-100">
+          <aside class="instapaper_ignoref b helvetica tracked">BLOG</aside>
+          <h1 class="f1 athelas mt3 mb1">Data Engineering on AWS — Pipelines, Orchestration &amp; Scale</h1>
+          <time class="f6 mv4 dib tracked" datetime="2024-03-01">March 1, 2024</time>
+        </header>
+
+        <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l">
+
+          <p>There's a version of data engineering that's mostly about moving files from one place to another. What I built was closer to an operating system for data — a set of interconnected services that could accept data from any source, process it through a full ML pipeline, and deliver a structured, queryable catalog, entirely without manual intervention, deployed across both a shared cloud environment and directly inside enterprise client AWS accounts.</p>
+
+          <p>Everything ran on AWS. Orchestration ran on a managed Airflow service. Compute for large-scale profiling ran on a managed distributed processing service. Model inference ran on a cloud ML platform. Storage and inter-service communication ran through object storage. Each piece had a specific reason for being chosen over alternatives.</p>
+
+          <h2>Multi-Source Ingestion</h2>
+
+          <p>The ingestion layer supported six different source types: tabular file uploads (CSV, Parquet, Excel), relational databases, cloud object storage, Azure SQL Server, a third-party accounting platform via OAuth2, and pre-signed URLs. Every source type produced the same normalized output before entering the pipeline downstream — so all processing logic was source-agnostic.</p>
+
+          <p>A few engineering details mattered here. Before creating any new data connection, the system checked whether an equivalent connection already existed (by comparing a hash of the credentials) to prevent duplicate onboarding. On refresh, it compared the current source contents against what had already been onboarded — adding new items, flagging removed ones, leaving existing datasets untouched. These two behaviors — deduplication and differential refresh — meant the system was safe to trigger repeatedly without accumulating garbage.</p>
+
+          <h2>Big Data Profiling at Scale</h2>
+
+          <p>For statistical profiling of enterprise datasets — which could reach hundreds of millions of rows — running processing on a single machine was not viable. I used a distributed computing approach on a managed cloud service to run profiling as an autoscaling job.</p>
+
+          <p>The profiling computed column-level completeness, cardinality, statistical summaries, and approximate quantile distributions using memory-efficient algorithms designed for large-scale data — estimating percentiles across very large datasets without loading them fully into memory. For clients with data governance requirements, the profiling output was written to cloud storage in a format directly queryable by other analytics services.</p>
+
+          <p>The pipeline waited for profiling completion through a sensor on the storage layer — polling until the output file appeared — rather than keeping a live connection to the compute job. This is the correct pattern for asynchronous cloud jobs: decouple the trigger from the result, and poll the durable artifact rather than the job status.</p>
+
+          <h2>Orchestrating a Customer Entity Resolution Pipeline — Inside Client Infrastructure</h2>
+
+          <p>One project took the data engineering work outside the platform entirely — into the private cloud environment of a large financial institution. Their requirement was strict: customer data could not leave their own environment. The pipeline ran in their infrastructure, not ours, and has been running in production in their environment for over three years.</p>
+
+          <p>The pipeline itself was a multi-stage Customer Entity Resolution system — resolving duplicate and fragmented customer records across systems into unified, canonical entities. My ownership was the orchestration layer: designing the DAGs that connected and sequenced every stage, scheduling daily delta runs, and building success and failure notification flows so the client's team always knew the pipeline's state without having to inspect it manually.</p>
+
+          <p>The triggering model was file-presence on object storage: each stage only started when the previous stage's output landed in the expected location. This made the pipeline naturally resumable — any stage could be rerun independently without restarting from the beginning, and no stage held open connections waiting for upstream work. For a pipeline running inside a client's environment where we had no direct debugging access, this design mattered: failure was isolated to a single stage, and the notification system surfaced exactly where it stopped.</p>
+
+          <p>Deploying orchestration into a client's environment rather than your own is operationally different in one critical way: you can't rely on being there to fix things. Every workflow had to be self-describing in its failures, every configuration had to be parameterized rather than hardcoded, and every notification had to give the client enough context to act on their own. The fact that this pipeline has run reliably for over three years without rebuilding is the proof that those design decisions were right.</p>
+
+          <h2>OAuth2 Integration — A Production Auth Flow</h2>
+
+          <p>Connecting to an external accounting platform via OAuth2 sounds straightforward until you actually implement it. The protocol has well-defined steps on paper. Production systems add layers of complexity that the spec doesn't cover: tokens expire, refresh tokens expire separately, users revoke access, environments get mixed up, and your auth flow needs to handle all of it gracefully without losing the client's data connection.</p>
+
+          <p>The access tokens were short-lived. Rather than waiting for a token to fail and then refreshing, the system proactively checked expiry on each connection use and refreshed the token if it was within a short window of expiring. This eliminated mid-request failures caused by tokens expiring between the check and the actual API call.</p>
+
+          <p>Refresh tokens have their own, longer expiry — but they do expire. The system tracked both timestamps and distinguished three distinct failure scenarios: an expired access token with a valid refresh token (automatically resolved), an access token where the refresh also fails (flagged for reauthorization with a specific error code), and a case where the refresh token itself has expired (requires the user to re-authorize from scratch). Each case produced a specific reason code rather than a generic auth failure — so the frontend could show the right message and prompt the right action.</p>
+
+          <p>The result was an auth integration that was silent when things were working and specific when they weren't — which is exactly what a production OAuth2 flow needs to be.</p>
+
+          <h2>Why These Design Choices</h2>
+
+          <p>The combination of event-driven orchestration, cloud-native compute, object storage as the universal inter-service layer, and robust multi-source ingestion wasn't assembled arbitrarily. Event-driven meant no polling and no wasted resources. Managed distributed compute meant autoscaling to client dataset size without provisioning. Object storage as the communication layer meant every intermediate artifact was durable, inspectable, and independently re-processable. Each design decision traded some complexity at setup time for reliability and operability at runtime. That trade-off is the right one for infrastructure running in environments you don't control.</p>
+
+          <ul class="pa0"></ul>
+          <div class="mt6 instapaper_ignoref"></div>
+        </div>
+
+        <aside class="w-30-l mt6-l"></aside>
+      </article>
+    </main>
+
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+      <div class="flex justify-between">
+        <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="/">&copy; Anjali Ramesh 2024</a>
+        <div>
+          <div class="ananke-socials">
+            <a href="https://github.com/anjaliramesh-datascience" target="_blank" rel="noopener" class="github ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="GitHub link" aria-label="follow on GitHub——Opens in a new window">
+              <span class="icon"><svg style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7C480,134.8,379.7,32,256,32z"/></svg></span>
+              <span class="new-window"><svg height="8px" style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg></span>
+            </a>
+            <a href="https://www.linkedin.com/in/anjaliramesh-datascience/" target="_blank" rel="noopener" class="linkedin ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" aria-label="follow on LinkedIn——Opens in a new window">
+              <span class="icon"><svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg></span>
+              <span class="new-window"><svg height="8px" style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>

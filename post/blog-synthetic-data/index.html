@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Synthetic Data Generation — Statistically Grounded, Business-Aware | Anjali Ramesh</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Building a synthetic data generator that preserves statistical fidelity, business segment structure, and privacy — and evaluates all three.">
+    <meta name="generator" content="Hugo 0.115.1">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="/ananke/css/main.min.css">
+    <meta property="og:title" content="Synthetic Data Generation — Statistically Grounded, Business-Aware" />
+    <meta property="og:description" content="Building a synthetic data generator that preserves statistical fidelity, business segment structure, and privacy — and evaluates all three." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="/post/blog-synthetic-data/" />
+    <meta property="article:published_time" content="2024-03-01T00:00:00Z" />
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="Synthetic Data Generation — Statistically Grounded, Business-Aware"/>
+    <meta name="twitter:description" content="Building a synthetic data generator that preserves statistical fidelity, business segment structure, and privacy — and evaluates all three."/>
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    <header class="cover bg-top" style="background-image: url('/images/portfolio_banner.jpg');">
+      <div class="bg-black-60">
+        <nav class="pv3 ph3 ph4-ns" role="navigation">
+          <div class="flex-l justify-between items-center center">
+            <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">Anjali Ramesh</a>
+            <div class="flex-l items-center">
+              <ul class="pl0 mr3">
+                <li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white no-underline white-90" href="/about/" title="About page">About</a></li>
+                <li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white no-underline white-90" href="/education/" title="Education page">Education</a></li>
+                <li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white no-underline white-90" href="/experience/" title="Experience page">Experience</a></li>
+                <li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white no-underline white-90" href="/skills/" title="Skills page">Skills</a></li>
+                <li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white no-underline white-90" href="/publications/" title="Publications page">Publications</a></li>
+                <li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white no-underline white-90" href="/contact/" title="Contact page">Contact</a></li>
+                <li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white no-underline white-90" href="/post/" title="Projects page">Projects</a></li>
+              </ul>
+              <div class="ananke-socials">
+                <a href="https://github.com/anjaliramesh-datascience" target="_blank" rel="noopener" class="github ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="GitHub link" aria-label="follow on GitHub——Opens in a new window">
+                  <span class="icon"><svg style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7C480,134.8,379.7,32,256,32z"/></svg></span>
+                  <span class="new-window"><svg height="8px" style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg></span>
+                </a>
+                <a href="https://www.linkedin.com/in/anjaliramesh-datascience/" target="_blank" rel="noopener" class="linkedin ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" aria-label="follow on LinkedIn——Opens in a new window">
+                  <span class="icon"><svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg></span>
+                  <span class="new-window"><svg height="8px" style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <div class="tc-l pv6 ph3 ph4-ns">
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">Synthetic Data Generation — Statistically Grounded, Business-Aware</div>
+          <div class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
+            Why generating useful synthetic data requires more than random numbers — and how I built a system that preserves statistical fidelity, business segment structure, and privacy.
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="pb7" role="main">
+      <article class="flex-l flex-wrap justify-between mw8 center ph3">
+        <header class="mt4 w-100">
+          <aside class="instapaper_ignoref b helvetica tracked">BLOG</aside>
+          <h1 class="f1 athelas mt3 mb1">Synthetic Data Generation — Statistically Grounded, Business-Aware</h1>
+          <time class="f6 mv4 dib tracked" datetime="2024-03-01">March 1, 2024</time>
+        </header>
+
+        <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l">
+
+          <p>Generating synthetic data is easy if you don't care whether it's useful. Sample random numbers within a range, give the columns plausible names, and you have something that looks like a dataset. The problem is that a model trained on that data will learn nothing meaningful, and a data quality test run against it will tell you nothing true.</p>
+
+          <p>I built a synthetic data generation system designed around the opposite philosophy: every generated record should be statistically faithful to the real data it represents, every sensitive column should be replaced with privacy-safe equivalents, and the structure of real business segments should be preserved — not averaged out.</p>
+
+          <h2>Where It Starts: Context, Not Just Schema</h2>
+
+          <p>Most synthetic data tools take a schema as input: column names and types. This system took more than that. It started with the full context of the business problem — the objective, the domain, the data products the schema represented, the segment rules extracted from the real data by the automated cataloging pipeline, and the PII flags already identified per column.</p>
+
+          <p>That richer input is what made the output more useful. A column named "revenue" means something different in a pharmaceutical supply chain dataset than in a consumer electronics dataset. With domain context, the generation could be tuned to produce values in the range and distribution that actually made sense for that business, not just whatever the historical data happened to look like.</p>
+
+          <h2>How Values Were Generated</h2>
+
+          <p>Numerical columns were generated by first determining the best-fitting statistical distribution for each column and then using the business context to calibrate the parameters. Rather than blindly copying the historical distribution (which might reflect a biased or unrepresentative sample), this approach used domain knowledge to ask: what should the distribution of this variable look like for this business? The final values were then drawn from that calibrated parametric distribution.</p>
+
+          <p>Categorical columns were generated based on reasoned value sets and frequencies: what are the plausible categories for this variable in this domain, and what should their relative proportions be? This avoided the trap of over-representing whatever happened to dominate the training data.</p>
+
+          <p>Columns flagged as PII — names, email addresses, phone numbers, national IDs — were replaced entirely with structurally valid but entirely fictional identifiers, locale and format calibrated to match the data domain: a European pharma dataset got European-format names and addresses, not American defaults.</p>
+
+          <h2>Segment-Aware Generation</h2>
+
+          <p>This is the feature that most synthetic data generators skip, and it's the most important one for producing data that's actually useful for ML.</p>
+
+          <p>Real datasets are not drawn uniformly from a single population. They contain segments — subgroups with different behaviors and different distributions. A customer base has high-value and low-value segments. A loan portfolio has low-risk and high-risk borrower profiles. A product catalog has fast-moving and slow-moving SKUs. If you generate synthetic data from the global average distribution, you erase those segments. A model trained on the result won't learn the conditional patterns that make the real data informative.</p>
+
+          <p>The cataloging pipeline I built extracted these segment structures automatically using decision tree models — producing human-readable rules that defined each segment and its statistics. The synthetic data generator used those rules directly: it assigned each synthetic record to a segment first, then drew that record's values from the conditional distributions for that segment. The result was synthetic data that preserved the structure of the real data, not just its marginal statistics.</p>
+
+          <h2>Evaluating the Output: A Three-Dimensional Quality Score</h2>
+
+          <p>Every generation run produced a quality score across three dimensions:</p>
+
+          <p><strong>Fidelity</strong> asked: how statistically similar is the synthetic data to the real data? This covered column-level distribution similarity and whether the correlation structure between columns was preserved.</p>
+
+          <p><strong>Utility</strong> asked: would a model trained on this synthetic data perform similarly to one trained on real data? Evaluated by training on synthetic and testing on real, then comparing against the reverse — the gap is the utility loss.</p>
+
+          <p><strong>Privacy</strong> asked: could someone use the synthetic data to infer real values or re-identify real individuals? This checked for cases where synthetic records were too statistically close to specific real records — a sign that the generation had memorized rather than generalized.</p>
+
+          <p>Together, these three scores gave the user a clear picture of what they were getting — and what trade-offs existed between fidelity and privacy for their specific dataset.</p>
+
+          <h2>Why This Matters</h2>
+
+          <p>Synthetic data is increasingly the answer to two problems that aren't going away: data governance (sharing real customer data with external models or teams is often legally restricted) and training data scarcity (real datasets are frequently too small, too skewed, or too expensive to collect at the required scale). A generator that is distribution-aware, segment-preserving, and privacy-evaluated is production infrastructure — not a demo.</p>
+
+          <p>Building it required combining statistical knowledge (distribution families, correlation preservation), LLM-based reasoning (structured parameter generation from domain context), and software engineering (multi-table relationships, async execution, cloud delivery, quality evaluation integration). That intersection — not any single skill in isolation — was what made the feature work.</p>
+
+          <ul class="pa0"></ul>
+          <div class="mt6 instapaper_ignoref"></div>
+        </div>
+
+        <aside class="w-30-l mt6-l"></aside>
+      </article>
+    </main>
+
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+      <div class="flex justify-between">
+        <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="/">&copy; Anjali Ramesh 2024</a>
+        <div>
+          <div class="ananke-socials">
+            <a href="https://github.com/anjaliramesh-datascience" target="_blank" rel="noopener" class="github ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="GitHub link" aria-label="follow on GitHub——Opens in a new window">
+              <span class="icon"><svg style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7C480,134.8,379.7,32,256,32z"/></svg></span>
+              <span class="new-window"><svg height="8px" style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg></span>
+            </a>
+            <a href="https://www.linkedin.com/in/anjaliramesh-datascience/" target="_blank" rel="noopener" class="linkedin ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" aria-label="follow on LinkedIn——Opens in a new window">
+              <span class="icon"><svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg></span>
+              <span class="new-window"><svg height="8px" style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>
